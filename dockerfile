@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./Fast_api ./Fast_api
 COPY ./model ./model
 
-CMD ["uvicorn", "Fast_api.main:app", "--host","0.0.0.0" ,"--port", "8000", "--reload"]
+CMD ["uvicorn", "Fast_api.main:app", "--host","0.0.0.0" ,"--port", "8080", "--reload"]
