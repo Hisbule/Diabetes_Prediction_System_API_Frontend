@@ -10,10 +10,10 @@ scaler = joblib.load("scaler.joblib")
 app = FastAPI()
 
 @app.get("/health")
-def health_cheak():
+async def health_cheak():
     return ({"status": "OK", "message": "API is running smoothly!"})
 @app.get("/info")
-def get_info():
+async def get_info():
     return {
         "model type": "Random Forest Classifier",
         "model path": "best_diabetes_model.joblib",
@@ -33,7 +33,7 @@ def get_info():
     }
 
 @app.post("/predict")
-def predict_diabetes(data: diabetes):
+async def predict_diabetes(data: diabetes):
   
     
     # Convert input to numpy array
