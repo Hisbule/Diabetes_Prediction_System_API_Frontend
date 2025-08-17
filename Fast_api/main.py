@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from Fast_api.schemas import diabetes
 import joblib
 import numpy as np
@@ -8,6 +9,20 @@ model = joblib.load("best_diabetes_model.joblib")
 scaler = joblib.load("scaler.joblib")
 
 app = FastAPI()
+
+origins = [
+    "https://diabetify-api.onrender.com/",               # For local frontend (Vite default)
+     # Your deployed frontend URL
+]
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # In production, replace with your frontend domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.get("/health")
 async def health_cheak():
