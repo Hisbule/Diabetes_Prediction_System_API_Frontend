@@ -11,8 +11,8 @@ scaler = joblib.load("scaler.joblib")
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173",                        # local Vite dev
-    "https://diabetify-frontend.onrender.com"       # deployed frontend
+    "http://localhost:5173",                   # local frontend (Vite dev)
+    "https://diabetify-api.onrender.com"       # deployed frontend
 ]
 # Add CORS middleware
 app.add_middleware(
